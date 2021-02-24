@@ -24,4 +24,18 @@ app.post("/shortURL", async (req, res) => {
   res.redirect("/");
 });
 
+// make the /get route
+// any parameter will be stored in the variable :shortUrl below
+app.get("/:shortUrl", async (req, res) => {
+  const shortUrl = await ShortURL.findOne({ short: req.params.shortUrl });
+
+  //check not exist
+  if (shortUrl == null) return res.sendStatus(404);
+
+  shortUrl.clicks++;
+  shortUrl.save();
+
+  res.redirect(shortUrl.full);
+});
+
 app.listen(process.env.PORT || 5000);
