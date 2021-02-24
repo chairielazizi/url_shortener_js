@@ -24,12 +24,12 @@
                 <th>Clicks</th>
             </thead>
             <tbody>
+                <% shortUrls.forEach(shortURL => { %>
+                    <td><a href="<%= shortURL.full %>"><%= shortURL.full %></a></td>
+                    <td><a href="<%= shortURL.short %>"><%= shortURL.short %></a></td>
+                    <td><%= shortURL.clicks %></td>
+                <% }) %>
                 <tr>
-                    <td>
-                        <a href="https://github.com/chairielazizi">https://github.com/chairielazizi</a>
-                    </td>
-                    <td><a href="/123456">123456</a></td>
-                    <td>10</td>
                 </tr>
             </tbody>
         </table>
